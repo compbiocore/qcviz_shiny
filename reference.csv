@@ -1,0 +1,90 @@
+qc_program,qc_metric,field_name,field_code,display_name
+fastqc,adaptcontent,"Illumina Small RNA 3' Adapter",isr3a,"Illumina Small RNA 3' Adapter"
+fastqc,adaptcontent,"Illumina Small RNA 5' Adapter",isr5a,"Illumina Small RNA 5' Adapter"
+fastqc,adaptcontent,Illumina Universal Adapter,i,Illumina Universal Adapter
+fastqc,adaptcontent,Nextera Transposase Sequence,n,Nextera Transposase Sequence
+fastqc,adaptcontent,Position,p,Position
+fastqc,adaptcontent,SOLID Small RNA Adapter,s,SOLID Small RNA Adapter
+fastqc,basequal,10th Percentile,t,10th Percentile
+fastqc,basequal,90th Percentile,tp,90th Percentile
+fastqc,basequal,Base,b,Base
+fastqc,basequal,Lower Quartile,l,Lower Quartile
+fastqc,basequal,Mean,m,Mean
+fastqc,basequal,Median,m1,Median
+fastqc,basequal,Upper Quartile,u,Upper Quartile
+fastqc,gccontent,Count,c,Count
+fastqc,gccontent,GC Content,g,GC Content
+fastqc,kmercount,Count,c,Count
+fastqc,kmercount,Max Obs/Exp Position,m,Max Obs/Exp Position
+fastqc,kmercount,Obs/Exp Max,o,Obs/Exp Max
+fastqc,kmercount,PValue,p,PValue
+fastqc,kmercount,Sequence,s,Sequence
+fastqc,overseqs,Count,c,Count
+fastqc,overseqs,Percentage,p,Percentage
+fastqc,overseqs,Possible Source,ps,Possible Source
+fastqc,overseqs,Sequence,s,Sequence
+fastqc,perbaseNcontent,Base,b,Base
+fastqc,perbaseNcontent,N-Count,n,N-Count
+fastqc,perbaseseqcontent,A,a,A
+fastqc,perbaseseqcontent,Base,b,Base
+fastqc,perbaseseqcontent,C,c,C
+fastqc,perbaseseqcontent,G,g,G
+fastqc,perbaseseqcontent,T,t,T
+fastqc,seqdup,Duplication Level,d,Duplication Level
+fastqc,seqdup,Percentage of deduplicated,p,Percentage of deduplicated
+fastqc,seqdup,Percentage of total,pot,Percentage of total
+fastqc,seqlength,Count,c,Count
+fastqc,seqlength,Length,l,Length
+fastqc,seqqual,Count,c,Count
+fastqc,seqqual,Quality,q,Quality
+fastqc,tilequal,Base,b,Base
+fastqc,tilequal,Mean,m,Mean
+fastqc,tilequal,Tile,t,Tile
+picard,alignmentmetrics,BAD_CYCLES,b,BAD_CYCLES
+picard,alignmentmetrics,CATEGORY,c,CATEGORY
+picard,alignmentmetrics,LIBRARY,l,LIBRARY
+picard,alignmentmetrics,MEAN_READ_LENGTH,m,MEAN_READ_LENGTH
+picard,alignmentmetrics,PCT_ADAPTER,pa,PCT_ADAPTER
+picard,alignmentmetrics,PCT_CHIMERAS,pc,PCT_CHIMERAS
+picard,alignmentmetrics,PCT_PF_READS,ppr,PCT_PF_READS
+picard,alignmentmetrics,PCT_PF_READS_ALIGNED,ppra,PCT_PF_READS_ALIGNED
+picard,alignmentmetrics,PCT_PF_READS_IMPROPER_PAIRS,pprip,PCT_PF_READS_IMPROPER_PAIRS
+picard,alignmentmetrics,PCT_READS_ALIGNED_IN_PAIRS,praip,PCT_READS_ALIGNED_IN_PAIRS
+picard,alignmentmetrics,PF_ALIGNED_BASES,pab,PF_ALIGNED_BASES
+picard,alignmentmetrics,PF_HQ_ALIGNED_BASES,phab,PF_HQ_ALIGNED_BASES
+picard,alignmentmetrics,PF_HQ_ALIGNED_Q20_BASES,phaqb,PF_HQ_ALIGNED_Q20_BASES
+picard,alignmentmetrics,PF_HQ_ALIGNED_READS,phar,PF_HQ_ALIGNED_READS
+picard,alignmentmetrics,PF_HQ_ERROR_RATE,pher,PF_HQ_ERROR_RATE
+picard,alignmentmetrics,PF_HQ_MEDIAN_MISMATCHES,phmm,PF_HQ_MEDIAN_MISMATCHES
+picard,alignmentmetrics,PF_INDEL_RATE,pir,PF_INDEL_RATE
+picard,alignmentmetrics,PF_MISMATCH_RATE,pmr,PF_MISMATCH_RATE
+picard,alignmentmetrics,PF_NOISE_READS,pnr,PF_NOISE_READS
+picard,alignmentmetrics,PF_READS,p,PF_READS
+picard,alignmentmetrics,PF_READS_ALIGNED,pra,PF_READS_ALIGNED
+picard,alignmentmetrics,PF_READS_IMPROPER_PAIRS,prip,PF_READS_IMPROPER_PAIRS
+picard,alignmentmetrics,READ_GROUP,rg,READ_GROUP
+picard,alignmentmetrics,READS_ALIGNED_IN_PAIRS,r,READS_ALIGNED_IN_PAIRS
+picard,alignmentmetrics,SAMPLE,s1,SAMPLE
+picard,alignmentmetrics,STRAND_BALANCE,s,STRAND_BALANCE
+picard,alignmentmetrics,TOTAL_READS,t,TOTAL_READS
+picard,insertsizemetrics,LIBRARY,l,LIBRARY
+picard,insertsizemetrics,MAX_INSERT_SIZE,mis1,MAX_INSERT_SIZE
+picard,insertsizemetrics,MEAN_INSERT_SIZE,mis2,MEAN_INSERT_SIZE
+picard,insertsizemetrics,MEDIAN_ABSOLUTE_DEVIATION,mad,MEDIAN_ABSOLUTE_DEVIATION
+picard,insertsizemetrics,MEDIAN_INSERT_SIZE,m,MEDIAN_INSERT_SIZE
+picard,insertsizemetrics,MIN_INSERT_SIZE,mis,MIN_INSERT_SIZE
+picard,insertsizemetrics,PAIR_ORIENTATION,p,PAIR_ORIENTATION
+picard,insertsizemetrics,READ_GROUP,rg,READ_GROUP
+picard,insertsizemetrics,READ_PAIRS,r,READ_PAIRS
+picard,insertsizemetrics,SAMPLE,s1,SAMPLE
+picard,insertsizemetrics,STANDARD_DEVIATION,s,STANDARD_DEVIATION
+picard,insertsizemetrics,WIDTH_OF_10_PERCENT,w,WIDTH_OF_10_PERCENT
+picard,insertsizemetrics,WIDTH_OF_20_PERCENT,wo2p,WIDTH_OF_20_PERCENT
+picard,insertsizemetrics,WIDTH_OF_30_PERCENT,wo3p,WIDTH_OF_30_PERCENT
+picard,insertsizemetrics,WIDTH_OF_40_PERCENT,wo4p,WIDTH_OF_40_PERCENT
+picard,insertsizemetrics,WIDTH_OF_50_PERCENT,wo5p,WIDTH_OF_50_PERCENT
+picard,insertsizemetrics,WIDTH_OF_60_PERCENT,wo6p,WIDTH_OF_60_PERCENT
+picard,insertsizemetrics,WIDTH_OF_70_PERCENT,wo7p,WIDTH_OF_70_PERCENT
+picard,insertsizemetrics,WIDTH_OF_80_PERCENT,wo8p,WIDTH_OF_80_PERCENT
+picard,insertsizemetrics,WIDTH_OF_90_PERCENT,wo9p,WIDTH_OF_90_PERCENT
+picard,insertsizemetrics,WIDTH_OF_99_PERCENT,wo9p1,WIDTH_OF_99_PERCENT
