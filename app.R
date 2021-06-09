@@ -1,3 +1,4 @@
+#June 8, 2021
 #Find out about building apps here:
 #http://shiny.rstudio.com/
 #---------------------------------------
@@ -32,6 +33,10 @@ library(shinydashboard)
 library(ggplot2)
 library(dplyr)
 library(reshape)
+library(jsonlite)
+library(tidyverse)
+library(purrr)
+library(tidyr)
 
 # CSV with qc metrics, stored as JSON entries
 # Contains: Sample_ids, experiment_ids, qc_program,
@@ -58,23 +63,37 @@ body <- dashboardBody(
   tabItems(
     tabItem(tabName = "hpc_runs",
             h2(titlePanel("HPC Runs"),
-              fluidRow(
-              box(
-                title = "Select Parameters", solidHeader = TRUE, background = "black",
-                collapsible = TRUE,
-                selectInput(inputId = "program_type", label = "Select a Program:", "Names"),
-                selectInput(inputId = "var1", label = "Select Variable 1:", "Variables"),
-                selectInput(inputId = "var2", label = "Select Variable 2:", "Variables2"),
-                numericInput(inputId = "num_obs", label = "Number of Observations to view:", value = 5, min = 1, max = 20)),
-              box(
-                title = "Stacked Bar Chart"
-                ,status = "primary"
-                ,solidHeader = TRUE 
-                ,collapsible = TRUE 
-                ,plotOutput("testPlot", height = "300px")
-              )
-              )
-           )
+               fluidRow(
+                 box(
+                   title = "Select Parameters", solidHeader = TRUE, background = "black",
+                   collapsible = TRUE,
+                   selectInput(inputId = "program_type", label = "Select a Program:", "Names"),
+                   selectInput(inputId = "var1", label = "Select Variable 1:", "Variables"),
+                   selectInput(inputId = "var2", label = "Select Variable 2:", "Variables2"),
+                   numericInput(inputId = "num_obs", label = "Number of Observations to view:", value = 5, min = 1, max = 20)),
+                 box(
+                   title = "Stacked Bar Chart"
+                   ,status = "primary"
+                   ,solidHeader = TRUE 
+                   ,collapsible = TRUE 
+                   ,plotOutput("testPlot", height = "300px")
+                 ),
+                 box(
+                   title = "Reference Preview"
+                   ,status = "primary"
+                   ,solidHeader = TRUE 
+                   ,collapsible = TRUE 
+                   ,tableOutput("metricTable")
+                 ),
+                 box(
+                   title = "Json Parse Preview"
+                   ,status = "primary"
+                   ,solidHeader = TRUE 
+                   ,collapsible = TRUE 
+                   ,tableOutput("testJson")
+                 )
+               )
+            )
     ),
     tabItem(tabName = "new_tab",
             h2(titlePanel("Empty Tab")))
@@ -103,11 +122,6 @@ Enrolment Applications Accepted Students Enrolled
                  3 2017 30 25 5 20 
                  2 2016 24 21 3 20 
                  1 2015 22 20 2 17") 
-  #TODO: Define datasetInput and plotInput below using reactive function
-
-  #jobids <- worth while to look into lapply, lambda function ?
-  
-  #TODO: Implement reactive function for variables 1 and 2 below
   
   
   #Create list of programs (Picard and fastqc are the only two)
@@ -136,6 +150,14 @@ Enrolment Applications Accepted Students Enrolled
     ggplot(df2, aes(Enrolment, y = value, fill = variable)) +
       geom_bar(stat = "identity")
   })
+  
+  
+  output$metricTable <- renderTable({
+    head(metrics)
+  })
+  
+  output$testJson <- fromJSON(metrics$data)
+  
   
   
 }
