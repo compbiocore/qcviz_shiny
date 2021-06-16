@@ -10,18 +10,7 @@ library(tidyverse)
 library(purrr)
 library(tidyr)
 
-# CSV with qc metrics, stored as JSON entries
-# Contains: Sample_ids, experiment_ids, qc_program,
-# and qc_metrics
-qc_metrics <- read.csv("metrics.csv")
 
-# Holds shortened names for qc_metrics  
-reference <- read.csv("reference.csv")
-
-# Holds seuqencing tech, sequencing centers, organism
-# tissue type, scientific name, job_id, library selection
-# much more 
-metrics <- read.csv("metrics.csv")
 
 body <- dashboardBody(
   tabItems(
@@ -42,25 +31,23 @@ body <- dashboardBody(
                    ,collapsible = TRUE 
                    ,plotOutput("testPlot", height = "300px")
                  ),
-                 box(
-                   title = "Reference Preview"
-                   ,status = "primary"
-                   ,solidHeader = TRUE 
-                   ,collapsible = TRUE 
-                   ,tableOutput("metricTable")
-                 ),
-                 box(
-                   title = "Json Parse Preview"
-                   ,status = "primary"
-                   ,solidHeader = TRUE 
-                   ,collapsible = TRUE 
-                   ,tableOutput("testJson")
-                 )
                )
             )
     ),
     tabItem(tabName = "new_tab",
-            h2(titlePanel("Empty Tab")))
+            h2(titlePanel("Empty Tab")),
+            fluidRow(
+              box(
+                title = "Box Plot Preview"
+                ,status = "primary"
+                ,solidHeader = TRUE 
+                ,collapsible = TRUE 
+                ,tableOutput("box_plot")
+              ),
+            
+            ),
+            
+            )
   )
 )
 
