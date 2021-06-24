@@ -4,11 +4,12 @@ library(tidyverse)
 library(shinydashboard)
 library(ggplot2)
 library(dplyr)
-library(reshape)
+library(reshape2)
 library(jsonlite)
 library(tidyverse)
 library(purrr)
 library(tidyr)
+ 
 
 # CSV with qc metrics, stored as JSON entries
 # Contains: Sample_ids, experiment_ids, qc_program,
