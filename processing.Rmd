@@ -1,0 +1,71 @@
+---
+title: "Processing data for the QCDB Shiny app"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(shiny)
+library(tidyverse)
+#library(shinydashboard)
+library(ggplot2)
+library(dplyr)
+library(reshape2)
+library(jsonlite)
+library(tidyverse)
+library(purrr)
+library(tidyr)
+
+```
+
+
+```{r}
+# CSV with qc metrics, stored as JSON entries
+# Contains: Sample_ids, experiment_ids, qc_program,
+# and qc_metrics
+metrics <- read.csv("metrics.csv")
+
+# Holds shortened names for qc_metrics  
+reference <- read.csv("reference.csv")
+```
+
+
+
+```{r}
+ # Attempting to convert matric's data column from a column of JSON objects to a separate dataframe 
+ json_df <- do.call(rbind.data.frame,lapply(metrics$data, FUN=function(x){ as.list(fromJSON(x))}))
+```
+
+# lets break the above command into steps to see whats happening.
+
+```{r}
+
+t3 <- purrr::map(metrics$data, jsonlite::fromJSON)
+
+
+# add columns to each element in the t3 list so that each list element contains its metadata (so like, which sample, which metric, etc.) -- this stackoverflow might help? https://stackoverflow.com/questions/9950144/access-lapply-index-names-inside-fun#comment12706279_9950217
+
+# use do.call(rbind) stuff to make one massive df we can use w ggplot (might need to add some reshaping)
+
+```
+
+
+head(t1)
+
+head(t2)
+
+
+t5 <- lapply(seq_along(list(metrics$data), function(i) jsonlite::fromJSON(metrics$data[i])))
+
+lapply(seq_along(x), function(i) paste(names(x)[[i]], x[[i]]))
+```
+
+
+
+```{r}
+
+ ref_preview <- renderTable({head(ref_preview, 10)})
+ write.csv(json_df,"C:\\Users\\smari\\OneDrive\\Documents\\qcviz_shiny\\MyData.csv", row.names = FALSE)
+ #Unsuccessful attempt: Error in (function (..., deparse.level = 1, make.row.names = TRUE, stringsAsFactors = default.stringsAsFactors(),  : 
+ #numbers of columns of arguments do not match
+}
+```
