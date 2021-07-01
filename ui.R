@@ -14,6 +14,41 @@ library(tidyr)
 
 body <- dashboardBody(
   tabItems(
+    tabItem(tabName = "graph_tab",
+            h2(titlePanel("Graph Tab"),
+               fluidRow(
+                 box(
+                   title = "Stacked Bar Chart"
+                   ,status = "primary"
+                   ,solidHeader = TRUE 
+                   ,collapsible = TRUE 
+                   ,plotOutput("testPlot", height = "400px")
+                 ),
+                 box(
+                   title = "Line Plot Chart"
+                   ,status = "primary"
+                   ,solidHeader = TRUE 
+                   ,collapsible = TRUE 
+                   ,plotOutput("lineGraph", height = "400px")
+                 ),
+                 box(
+                   title = "Heat Map"
+                   ,status = "primary"
+                   ,solidHeader = TRUE 
+                   ,collapsible = TRUE 
+                   ,plotOutput("heatMap", height = "400px")
+                 ),
+                 box(
+                   title = "Multi-line Graph"
+                   ,status = "primary"
+                   ,solidHeader = TRUE 
+                   ,collapsible = TRUE 
+                   ,plotOutput("multilineGraph", height = "400px")
+                 ),
+               )
+            ),
+            
+    ),
     tabItem(tabName = "hpc_runs",
             h2(titlePanel("HPC Runs"),
                fluidRow(
@@ -24,42 +59,19 @@ body <- dashboardBody(
                    selectInput(inputId = "var1", label = "Select Variable 1:", "Variables"),
                    selectInput(inputId = "var2", label = "Select Variable 2:", "Variables2"),
                    numericInput(inputId = "num_obs", label = "Number of Observations to view:", value = 5, min = 1, max = 20)),
-                 box(
-                   title = "Stacked Bar Chart"
-                   ,status = "primary"
-                   ,solidHeader = TRUE 
-                   ,collapsible = TRUE 
-                   ,plotOutput("testPlot", height = "300px")
-                 ),
                )
             )
-    ),
-    tabItem(tabName = "new_tab",
-            h2(titlePanel("Empty Tab")),
-            fluidRow(
-              box(
-                title = "Box Plot Preview"
-                ,status = "primary"
-                ,solidHeader = TRUE 
-                ,collapsible = TRUE 
-                ,tableOutput("box_plot")
-              ),
-            
-            ),
-            
-            )
+    )
   )
 )
-
 
 # Put them together into a dashboardPage
 ui <- dashboardPage(
   dashboardHeader(title = "QCDB"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("HPC Runs", tabName = "hpc_runs", icon = icon("chart-bar")),
-      menuItem("New Tab", tabName = "new_tab", icon = icon("grin"))
-      
+      menuItem("Graph Tab", tabName = "graph_tab", icon = icon("chart-bar")),
+      menuItem("HPC Runs", tabName = "hpc_runs", icon = icon("chart-bar"))
     )
   ),
   body
