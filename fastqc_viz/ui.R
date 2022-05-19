@@ -15,11 +15,12 @@ library(timevis)
 library(DT)
 library(shinycssloaders)
 library(fontawesome)
-
+library(shinyjs)
 source("parse.R")
 source("dataframe.R")
 #----------------------------------------------------------
 ui <- shinyUI(fluidPage(
+  useShinyjs(),
   theme = shinytheme("lumen"),
   
   titlePanel("FastQC"),
@@ -27,21 +28,54 @@ ui <- shinyUI(fluidPage(
   sidebarLayout(
     
     sidebarPanel(width = 3,
-                 selectInput(inputId="main",
-                             label= strong("Choose a main sample:"),
-                             choices=unique(c(data$db_id,data_s$db_id,
-                                              data_g$db_id,data_sq$db_id,
-                                              data_q$db_id))
-                             ),
-                 actionButton("bt_samples", "Add 10 samples"),
+                 radioButtons(inputId = "layout",
+                              label = strong("library_layout:"),
+                              choices = c("SINGLE","PAIRED"),
+                              selected = "SINGLE"
+                              ),
+                 
+                 uiOutput("pull1"),
+                 uiOutput("radio1"),
+                 
+                 uiOutput("pull2"),
+                 uiOutput("radio2"),
+                 
+                 uiOutput("pull3"),
+                 uiOutput("radio3"),
+                 
+                 uiOutput("pull4"),
+                 uiOutput("radio4"),
+                 
+                 uiOutput("pull5"),
+                 uiOutput("radio5"),
+                 
+                 uiOutput("pull6"),
+                 uiOutput("radio6"),
+                 
+                 uiOutput("pull7"),
+                 uiOutput("radio7"),
+                 
+                 actionButton("button1", "Add filter"),
+                 hidden(actionButton("button2", "Add filter")),
+                 hidden(actionButton("button3", "Add filter")),
+                 hidden(actionButton("button4", "Add filter")),
+                 hidden(actionButton("button5", "Add filter")),
+                 hidden(actionButton("button6", "Add filter")),
+                 hidden(actionButton("button7", "Add filter")),
+                 hidden(actionButton("filter", "Add filter")),
+                 actionButton("remove", "Remove filter"),
+                 
+                 hr(),
+                 
+                 uiOutput("mian_sample"),
+                 
+                 actionButton("bt_samples", "Add 5 samples"),
+                 
                  actionButton("bt_clear", "Clear"),
-                 br(),
-                 checkboxGroupInput(inputId = "db_id",
-                             label = strong("Compare with:"),
-                             choices = unique(c(data$db_id,data_s$db_id,
-                                                   data_g$db_id,data_sq$db_id,
-                                                   data_q$db_id))
-                              )
+                 
+                 uiOutput("choice_sample"),
+                 
+                 
     ),
     mainPanel(width = 8,
               tabsetPanel(

@@ -33,3 +33,16 @@ for (i in 1:length(data2)){
 }
 
 N_count=list_json$fastqc.perbaseNcontent
+
+
+
+data_meta <- read.csv("samplemeta.csv")
+name="library_name"
+
+data_meta[data_meta["library_strategy"]=="OTHER",]$db_id
+#data1=data[data$read_type ==1, ]
+data1[data1$db_id == "SRS114766_SRX026690", ]
+data_s[data_s$db_id=="SRS114766_SRX026690",]
+data_meta[data_meta$db_id=="SRS114766_SRX026690",]$library_layout
+
+
